@@ -19,4 +19,22 @@ export default {
 </script>
 
 <style>
+body,
+ul,
+li,
+h1,
+h2,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: #f6f7fb;
+  color: #1a284d;
+}
 </style>
