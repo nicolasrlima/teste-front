@@ -1,19 +1,18 @@
 <template>
   <div id="app">
     <NavigationSidebar />
-    <TheHeader />
-    <router-view />
+    <main>
+      <router-view />
+    </main>
   </div>
 </template>
 
 <script>
 import NavigationSidebar from "@/components/NavigationSidebar.vue";
-import TheHeader from "@/components/TheHeader.vue";
 
 export default {
   components: {
     NavigationSidebar,
-    TheHeader,
   },
 };
 </script>
@@ -33,8 +32,18 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: #f6f7fb;
   color: #1a284d;
+}
+
+div {
+  display: grid;
+  grid-template-rows: 200px 1fr 200px;
+  justify-content: center;
 }
 </style>
