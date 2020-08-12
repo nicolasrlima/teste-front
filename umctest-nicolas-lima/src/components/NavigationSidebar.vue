@@ -1,38 +1,46 @@
 <template>
-  <section v-if="sidebarStatus">
-    <img id="logo" src="../assets/brand.svg" alt="PEG Contas Logo" />
-    <nav>
-      <button @click="sidebarStatus = false">X</button>
-      <a href="/minhas-atividades">
-        <img src="../assets/accounts.svg" />
-        <span>Minhas Atividades</span>
-      </a>
-      <a href="/todas-as-contas">
-        <img src="../assets/accounts.svg" />
-        <span>Todas as contas</span>
-      </a>
-      <a href="/usuarios">
-        <img src="../assets/user.svg" />
-        <span>Usuários</span>
-      </a>
-      <a href="/desempenho">
-        <img src="../assets/performance.svg" />
-        <span>Desempenho</span>
-      </a>
-      <a href="/dashboard">
-        <img src="../assets/dashboard.svg" />
-        <span>Dashboard</span>
-      </a>
-    </nav>
-  </section>
-  <button @click="sidebarStatus = true" v-else>Abrir</button>
+  <transition>
+    <section v-show="sidebarStatus">
+      <img id="logo" src="../assets/brand.svg" alt="PEG Contas Logo" />
+      <nav>
+        <button @click="toggleSidebar">X</button>
+        <a href="/minhas-atividades">
+          <img src="../assets/accounts.svg" />
+          <span>Minhas Atividades</span>
+        </a>
+        <a href="/todas-as-contas">
+          <img src="../assets/accounts.svg" />
+          <span>Todas as contas</span>
+        </a>
+        <a href="/usuarios">
+          <img src="../assets/user.svg" />
+          <span>Usuários</span>
+        </a>
+        <a href="/desempenho">
+          <img src="../assets/performance.svg" />
+          <span>Desempenho</span>
+        </a>
+        <a href="/dashboard">
+          <img src="../assets/dashboard.svg" />
+          <span>Dashboard</span>
+        </a>
+      </nav>
+    </section>
+  </transition>
 </template>
 
 <script>
 export default {
   name: "NavigationSidebar",
-  data() {
-    return { sidebarStatus: true };
+  computed: {
+    sidebarStatus() {
+      return this.$store.state.sidebarStatus;
+    },
+  },
+  methods: {
+    toggleSidebar() {
+      this.$store.commit("changeSidebarStatus");
+    },
   },
 };
 </script>

@@ -1,15 +1,17 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    sidebarStatus: true,
   },
   mutations: {
+    changeSidebarStatus(state) {
+      state.sidebarStatus = !state.sidebarStatus;
+    },
   },
-  actions: {
-  },
-  modules: {
-  }
-})
+  actions: {},
+  modules: {},
+});
