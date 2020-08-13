@@ -5,22 +5,22 @@
         <img id="logo" src="../../assets/brand.svg" alt="PEG Contas Logo" />
 
         <nav>
-          <router-link to="/minhas-atividades">
+          <router-link to="/activities">
             <img src="../../assets/accounts.svg" />
             <span>Minhas Atividades</span>
           </router-link>
 
-          <router-link to="/todas-as-contas">
+          <router-link to="/accounts">
             <img src="../../assets/accounts.svg" />
             <span>Todas as contas</span>
           </router-link>
 
-          <router-link to="/usuarios">
+          <router-link to="/users">
             <img src="../../assets/user.svg" />
             <span>Usuários</span>
           </router-link>
 
-          <router-link to="/desempenho">
+          <router-link to="/performance">
             <img src="../../assets/performance.svg" />
             <span>Desempenho</span>
           </router-link>

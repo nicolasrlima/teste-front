@@ -1,17 +1,14 @@
 <template>
   <div>
-    <h1>Header</h1>
+    <p>Cards Info</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TheHeader",
+  name: "CardsInfo",
 };
 </script>
 
-<style scoped>
-div {
-  grid-row: 1;
-}
+<style>
 </style>

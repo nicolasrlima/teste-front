@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import TheHeader from "@/components/TheHeader.vue";
+import TheHeader from "@/components/Header/TheHeader.vue";
 import CardsList from "@/components/CardsList.vue";
 import PageBrowser from "@/components/PageBrowser.vue";
 
