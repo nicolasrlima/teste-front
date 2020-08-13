@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    sidebarStatus: true,
+    sidebarStatus: false,
   },
   mutations: {
     changeSidebarStatus(state) {

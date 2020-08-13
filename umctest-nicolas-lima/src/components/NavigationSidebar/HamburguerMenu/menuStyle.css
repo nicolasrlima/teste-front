@@ -1,0 +1,23 @@
+#container {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  width: fit-content;
+  height: fit-content;
+}
+
+.bar {
+  width: 35px;
+  height: 5px;
+  background-color: #2793ff;
+  margin: 6px 0;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: opacity 0.5s;
+}

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import NavigationSidebar from "@/components/NavigationSidebar.vue";
+import NavigationSidebar from "@/components/NavigationSidebar/NavigationSidebar.vue";
 
 export default {
   components: {
