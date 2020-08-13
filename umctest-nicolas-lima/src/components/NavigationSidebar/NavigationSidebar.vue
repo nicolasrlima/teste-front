@@ -5,30 +5,30 @@
         <img id="logo" src="../../assets/brand.svg" alt="PEG Contas Logo" />
 
         <nav>
-          <a href="/minhas-atividades">
+          <router-link to="/minhas-atividades">
             <img src="../../assets/accounts.svg" />
             <span>Minhas Atividades</span>
-          </a>
+          </router-link>
 
-          <a href="/todas-as-contas">
+          <router-link to="/todas-as-contas">
             <img src="../../assets/accounts.svg" />
             <span>Todas as contas</span>
-          </a>
+          </router-link>
 
-          <a href="/usuarios">
+          <router-link to="/usuarios">
             <img src="../../assets/user.svg" />
             <span>Usuários</span>
-          </a>
+          </router-link>
 
-          <a href="/desempenho">
+          <router-link to="/desempenho">
             <img src="../../assets/performance.svg" />
             <span>Desempenho</span>
-          </a>
+          </router-link>
 
-          <a href="/dashboard">
+          <router-link to="/dashboard">
             <img src="../../assets/dashboard.svg" />
             <span>Dashboard</span>
-          </a>
+          </router-link>
         </nav>
       </section>
     </transition>
@@ -57,6 +57,11 @@ export default {
       if (currentTarget === target && this.sidebarStatus === true) {
         this.toggleSidebar();
       }
+    },
+  },
+  watch: {
+    $route() {
+      if (this.sidebarStatus === true) this.toggleSidebar();
     },
   },
 };
