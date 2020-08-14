@@ -41,13 +41,16 @@ button {
 a {
   display: flex;
   flex-direction: column;
-  color: #a1acc9;
   align-items: center;
 }
 
-a:hover {
+a:hover,
+.router-link-active {
+  border-left: 4px solid #2793ff;
+}
+
+.router-link-active span {
   color: #2793ff;
-  border-left: 4px solid #2393ff;
 }
 
 span {

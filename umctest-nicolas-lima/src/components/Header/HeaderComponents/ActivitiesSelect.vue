@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="activity-container">
     <select name="activities" id="activities">
       <option value="Unidade integrada I">Unidade integrada I</option>
       <option value="Unidade integrada II">Unidade integrada II</option>
@@ -15,6 +15,12 @@ export default {
 </script>
 
 <style scoped>
+.activity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 select {
   width: fit-content;
   -webkit-padding-end: 20px;
@@ -30,5 +36,11 @@ select {
 
 select:focus {
   outline: none;
+}
+
+@media (min-width: 801px) {
+  .activity-container {
+    grid-column: 1;
+  }
 }
 </style>

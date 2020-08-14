@@ -30,12 +30,14 @@ div {
   grid-row: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 60vw;
 }
 
 @media (min-width: 801px) {
   div {
-    width: 80vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 </style>

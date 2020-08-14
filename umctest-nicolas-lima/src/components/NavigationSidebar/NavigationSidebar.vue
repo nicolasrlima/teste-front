@@ -7,27 +7,27 @@
         <nav>
           <router-link to="/activities">
             <img src="../../assets/accounts.svg" />
-            <span>Minhas Atividades</span>
+            <span class="light-grey">Minhas Atividades</span>
           </router-link>
 
           <router-link to="/accounts">
             <img src="../../assets/accounts.svg" />
-            <span>Todas as contas</span>
+            <span class="light-grey">Todas as contas</span>
           </router-link>
 
           <router-link to="/users">
             <img src="../../assets/user.svg" />
-            <span>Usuários</span>
+            <span class="light-grey">Usuários</span>
           </router-link>
 
           <router-link to="/performance">
             <img src="../../assets/performance.svg" />
-            <span>Desempenho</span>
+            <span class="light-grey">Desempenho</span>
           </router-link>
 
           <router-link to="/dashboard">
             <img src="../../assets/dashboard.svg" />
-            <span>Dashboard</span>
+            <span class="light-grey">Dashboard</span>
           </router-link>
         </nav>
       </section>

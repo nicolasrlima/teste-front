@@ -44,4 +44,9 @@ body {
   background-color: #f6f7fb;
   color: #1a284d;
 }
+
+/*general styles */
+.light-grey {
+  color: #a1acc9;
+}
 </style>
