@@ -1,6 +1,9 @@
 <template>
   <div>
-    <p>Filter</p>
+    <select name="teste" id>
+      <option value="Unidade integrada I">Prioridade(SLA)</option>
+      <option value="Unidade integrada II">Receber documentos</option>
+    </select>
   </div>
 </template>
 
@@ -10,5 +13,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>

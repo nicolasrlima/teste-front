@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p>Cards Info</p>
+    <span>4</span>
+    <span>7</span>
+    <span>43</span>
   </div>
 </template>
 
@@ -10,5 +12,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>

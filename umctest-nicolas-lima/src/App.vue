@@ -18,6 +18,10 @@ export default {
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body,
 ul,
 li,
@@ -39,11 +43,5 @@ a {
 body {
   background-color: #f6f7fb;
   color: #1a284d;
-}
-
-div {
-  display: grid;
-  grid-template-rows: 200px 1fr 200px;
-  justify-content: center;
 }
 </style>

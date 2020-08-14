@@ -1,18 +1,18 @@
 #container {
   display: inline-block;
   cursor: pointer;
-  margin-top: 1.5rem;
-  margin-left: 1.5rem;
   width: fit-content;
   height: fit-content;
+  margin-top: 1rem;
+  margin-left: 1rem;
 }
 
 .bar {
   width: 35px;
   height: 5px;
   background-color: #2793ff;
-  margin: 6px 0;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .fade-enter {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header-container">
     <ActivitiesSelect />
     <CardsInfo />
     <CardsFilter />
@@ -22,7 +22,20 @@ export default {
 </script>
 
 <style scoped>
+.header-container {
+  margin-top: 1rem;
+}
+
 div {
   grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+
+@media (min-width: 801px) {
+  div {
+    width: 80vw;
+  }
 }
 </style>

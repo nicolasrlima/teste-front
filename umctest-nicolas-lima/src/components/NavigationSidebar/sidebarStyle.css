@@ -1,9 +1,13 @@
 .sidebar-closed {
   position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .sidebar-open {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
@@ -32,19 +36,6 @@ nav {
 a,
 button {
   margin-top: 1.5rem;
-}
-
-button {
-  background-color: transparent;
-  border-color: transparent;
-  cursor: pointer;
-  color: #e7ebf7;
-  background-color: #2793ff;
-  border-radius: 50%;
-  border: 2px solid #2793ff;
-  position: absolute;
-  right: -10px;
-  font-size: 1.2rem;
 }
 
 a {
