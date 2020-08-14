@@ -21,23 +21,27 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .header-container {
   margin-top: 1rem;
-}
-
-div {
   grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 60vw;
 }
 
+@media (min-width: 601px) {
+  .header-container {
+    width: 70vw;
+  }
+}
+
 @media (min-width: 801px) {
-  div {
+  .header-container {
+    grid-column: 1 / 4;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    width: 80vw;
+    font-size: 1.2em;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="activities-container">
     <TheHeader />
     <CardsList />
   </div>
@@ -19,16 +19,19 @@ export default {
 </script>
 
 <style>
-div {
+.activities-container {
   display: grid;
   grid-template-rows: 100px 1fr;
   justify-content: center;
+  height: 100vh;
 }
 
 @media (min-width: 801px) {
-  div {
+  .activities-container {
     display: grid;
-    grid-template-rows: 150px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    justify-items: center;
   }
 }
 </style>

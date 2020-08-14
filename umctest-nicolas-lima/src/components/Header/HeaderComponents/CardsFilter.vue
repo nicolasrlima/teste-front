@@ -1,7 +1,8 @@
 <template>
   <div class="filter-container">
+    <span class="desktop">Organizar por:</span>
     <select name="filter" id="filter">
-      <option value="Unidade integrada I">Prioridade(SLA)</option>
+      <option value="Unidade integrada I">Prioridade (SLA)</option>
       <option value="Unidade integrada II">Receber documentos</option>
     </select>
   </div>
@@ -18,7 +19,7 @@ export default {
   background: url("../../../assets/arrow.svg") no-repeat;
   background-position-x: 95%;
   background-position-y: 50%;
-  border: 1px solid;
+  border: 1px solid #8b98ba;
   border-radius: 5px;
   width: fit-content;
   -webkit-padding-end: 20px;
@@ -31,5 +32,25 @@ export default {
 
 select:focus {
   outline: none;
+}
+
+.desktop {
+  display: none;
+}
+
+@media (min-width: 801px) {
+  .filter-container {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .desktop {
+    display: inline-block;
+    margin-right: 1em;
+  }
+
+  #filter {
+    padding: 10px 20px;
+  }
 }
 </style>

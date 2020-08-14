@@ -1,14 +1,19 @@
 <template>
   <div class="info-container">
-    <span id="red">4</span>
+    <div class="details-container">
+      <span id="red" class="mobile">4</span>
+      <span id="red" class="desktop">4 cards</span>
 
-    <span id="yellow">7</span>
+      <span id="yellow" class="mobile">7</span>
+      <span id="yellow" class="desktop">7 cards</span>
 
-    <span id="green">43</span>
-
+      <span id="green" class="mobile">43</span>
+      <span id="green" class="desktop">43 cards</span>
+    </div>
     <div id="total">
       <span class="light-grey">Total:</span>
-      <span>54 contas</span>
+      <span class="mobile">54</span>
+      <span class="desktop">54 contas</span>
     </div>
   </div>
 </template>
@@ -23,13 +28,24 @@ export default {
 .info-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  margin: 0.5em 0;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-self: center;
+}
+
+.details-container span {
+  margin-right: 0.5em;
 }
 
 .light-grey {
   margin-right: 0.2em;
+}
+
+.mobile {
+  display: inline-block;
+}
+
+.desktop {
+  display: none;
 }
 
 #total {
@@ -55,5 +71,26 @@ export default {
 
 #green::before {
   color: #20bf6b;
+}
+
+@media (min-width: 801px) {
+  .info-container {
+    grid-column: 2;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: inline-block;
+  }
+
+  #total {
+    display: block;
+    font-size: 0.8em;
+  }
 }
 </style>

@@ -15,12 +15,6 @@ export default {
 </script>
 
 <style scoped>
-.activity-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 select {
   width: fit-content;
   -webkit-padding-end: 20px;
@@ -41,6 +35,7 @@ select:focus {
 @media (min-width: 801px) {
   .activity-container {
     grid-column: 1;
+    justify-self: start;
   }
 }
 </style>
