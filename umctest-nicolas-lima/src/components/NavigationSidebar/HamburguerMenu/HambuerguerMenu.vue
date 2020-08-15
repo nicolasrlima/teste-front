@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     toggleSidebar() {
-      this.$store.commit("changeSidebarStatus");
+      this.$store.commit("CHANGE_SIDEBAR_STATUS");
     },
   },
 };

@@ -1,9 +1,12 @@
 <template>
   <div class="activity-container">
-    <select name="activities" id="activities">
-      <option value="Unidade integrada I">Unidade integrada I</option>
-      <option value="Unidade integrada II">Unidade integrada II</option>
-      <option value="Unidade integrada III">Unidade integrada III</option>
+    <select name="activities" id="activities" v-model="currentActivity">
+      <option value="Carregando..." disabled v-if="loading===true">Carregando...</option>
+      <option
+        v-for="activity in activitiesList"
+        :key="activity.id"
+        :value="activity.name"
+      >{{activity.name}}</option>
     </select>
   </div>
 </template>
@@ -11,6 +14,31 @@
 <script>
 export default {
   name: "ActivitiesSelect",
+  data() {
+    return {
+      loading: true,
+      activitiesList: null,
+      currentActivity: "Carregando...",
+    };
+  },
+  methods: {
+    getActivities() {
+      this.loading = true;
+
+      fetch("http://localhost:3000/activities")
+        .then((r) => r.json())
+        .then((data) => {
+          this.activitiesList = data;
+          this.loading = false;
+          this.currentActivity = this.activitiesList[0].name;
+
+          this.$store.commit("CHANGE_CURRENT_ACTIVITY", this.currentActivity);
+        });
+    },
+  },
+  created() {
+    this.getActivities();
+  },
 };
 </script>
 
@@ -24,7 +52,7 @@ select {
   appearance: none;
   background: url("../../../assets/arrow.svg") no-repeat right;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
