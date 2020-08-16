@@ -1,9 +1,9 @@
 <template>
   <div class="filter-container">
     <span class="desktop">Organizar por:</span>
-    <select name="filter" id="filter">
-      <option value="Unidade integrada I">Prioridade (SLA)</option>
-      <option value="Unidade integrada II">Receber documentos</option>
+    <select name="filter" id="filter" v-model="currentFilter">
+      <option :value="{id: '1', name: 'Prioridade (SLA)'}">Prioridade (SLA)</option>
+      <option :value="{id: '2', name: 'Receber documentos'}">Receber documentos</option>
     </select>
   </div>
 </template>
@@ -11,6 +11,17 @@
 <script>
 export default {
   name: "CardsFilter",
+  data() {
+    return {
+      currentFilter: { id: "1", name: "Prioridade (SLA)" },
+    };
+  },
+  created() {
+    this.$store.commit("CHANGE_CURRENT_FILTER", this.currentFilter);
+  },
+  updated() {
+    this.$store.commit("CHANGE_CURRENT_FILTER", this.currentFilter);
+  },
 };
 </script>
 

@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     sidebarStatus: false,
     currentActivity: null,
+    currentFilter: null,
   },
   mutations: {
     CHANGE_SIDEBAR_STATUS(state) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     CHANGE_CURRENT_ACTIVITY(state, payload) {
       state.currentActivity = payload;
+    },
+    CHANGE_CURRENT_FILTER(state, payload) {
+      state.currentFilter = payload;
     },
   },
   actions: {},
