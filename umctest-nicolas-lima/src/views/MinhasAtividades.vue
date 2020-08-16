@@ -7,7 +7,7 @@
 
 <script>
 import TheHeader from "@/components/Header/TheHeader.vue";
-import CardsList from "@/components/CardsList.vue";
+import CardsList from "@/components/CardsList/CardsList.vue";
 
 export default {
   name: "MinhasAtividades",

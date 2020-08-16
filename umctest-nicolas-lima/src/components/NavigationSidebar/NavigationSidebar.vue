@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import HamburguerMenu from "./HamburguerMenu/HambuerguerMenu.vue";
+import HamburguerMenu from "./NavigationSidebarComponents/HambuerguerMenu.vue";
 
 export default {
   name: "NavigationSidebar",
@@ -67,4 +67,100 @@ export default {
 };
 </script>
 
-<style scoped src="./sidebarStyle.css"></style>
+<style scoped>
+.sidebar-closed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.sidebar-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  animation: bgFade 0.3s;
+}
+
+section {
+  height: 100%;
+  width: 8rem;
+  background-color: #e7ebf7;
+  position: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo {
+  width: 100%;
+}
+
+nav {
+  text-align: center;
+  width: 100%;
+}
+
+a,
+button {
+  margin-top: 1.5rem;
+}
+
+a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a:hover,
+.router-link-active {
+  border-left: 4px solid #2793ff;
+}
+
+.router-link-active span {
+  color: #2793ff;
+}
+
+span {
+  width: 6rem;
+}
+
+/* Animations */
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.3s;
+}
+
+.slide-enter-to {
+  animation: slideAnim 0.3s;
+}
+
+.slide-leave-to {
+  animation: slideAnim 0.3s reverse;
+}
+
+@keyframes slideAnim {
+  from {
+    transform: translate3d(-40px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes bgFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style>

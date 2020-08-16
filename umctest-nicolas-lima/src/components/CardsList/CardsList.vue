@@ -1,12 +1,18 @@
 <template>
   <div class="cards-container">
     <h1>CardsList</h1>
+    <TheCard />
   </div>
 </template>
 
 <script>
+import TheCard from "./CardsListComponents/TheCard.vue";
+
 export default {
   name: "CardsList",
+  components: {
+    TheCard,
+  },
 };
 </script>
 
