@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     currentActivity() {
-      return this.$store.state.currentActivity;
+      return this.$store.state.currentActivity.value;
     },
     totalCards() {
       return (
