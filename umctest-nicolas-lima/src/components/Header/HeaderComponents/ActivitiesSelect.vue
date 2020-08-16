@@ -42,7 +42,6 @@ export default {
   },
   updated() {
     this.$store.commit("CHANGE_CURRENT_ACTIVITY", this.currentActivity.id);
-    console.log(this.$store.state.currentActivity);
   },
 };
 </script>

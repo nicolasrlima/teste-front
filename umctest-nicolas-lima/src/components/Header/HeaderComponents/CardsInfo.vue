@@ -1,19 +1,19 @@
 <template>
   <div class="info-container">
     <div class="details-container">
-      <span id="red" class="mobile">4</span>
-      <span id="red" class="desktop">4 cards</span>
+      <span id="delayed" class="mobile">{{cardsCount.delayed}}</span>
+      <span id="delayed" class="desktop">{{cardsCount.delayed}} cards</span>
 
-      <span id="yellow" class="mobile">7</span>
-      <span id="yellow" class="desktop">7 cards</span>
+      <span id="warning" class="mobile">{{cardsCount.warning}}</span>
+      <span id="warning" class="desktop">{{cardsCount.warning}} cards</span>
 
-      <span id="green" class="mobile">43</span>
-      <span id="green" class="desktop">43 cards</span>
+      <span id="good" class="mobile">{{cardsCount.good}}</span>
+      <span id="good" class="desktop">{{cardsCount.good}} cards</span>
     </div>
     <div id="total">
       <span class="light-grey">Total:</span>
-      <span class="mobile">54</span>
-      <span class="desktop">54 contas</span>
+      <span class="mobile">{{totalCards}}</span>
+      <span class="desktop">{{totalCards}} contas</span>
     </div>
   </div>
 </template>
@@ -21,6 +21,39 @@
 <script>
 export default {
   name: "CardsInfo",
+  data() {
+    return {
+      cardsCount: {
+        delayed: null,
+        warning: null,
+        good: null,
+      },
+    };
+  },
+  computed: {
+    currentActivity() {
+      return this.$store.state.currentActivity;
+    },
+    totalCards() {
+      return (
+        this.cardsCount.delayed + this.cardsCount.warning + this.cardsCount.good
+      );
+    },
+  },
+  methods: {
+    getCardsCount(activityID) {
+      fetch(`http://localhost:3000/activities/${activityID}`)
+        .then((r) => r.json())
+        .then((data) => {
+          this.cardsCount = data.cardsCount;
+        });
+    },
+  },
+  watch: {
+    currentActivity(newActivity) {
+      this.getCardsCount(newActivity);
+    },
+  },
 };
 </script>
 
@@ -52,24 +85,24 @@ export default {
   display: inline-block;
 }
 
-#red::before,
-#yellow::before,
-#green::before {
+#delayed::before,
+#warning::before,
+#good::before {
   content: "\2022";
   display: inline-block;
   width: 0.75em;
   font-weight: bold;
 }
 
-#red::before {
+#delayed::before {
   color: #fe5959;
 }
 
-#yellow::before {
+#warning::before {
   color: #ffc733;
 }
 
-#green::before {
+#good::before {
   color: #20bf6b;
 }
 

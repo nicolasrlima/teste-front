@@ -14,6 +14,11 @@ export default {
   components: {
     NavigationSidebar,
   },
+  watch: {
+    $route() {
+      this.$store.state.currentActivity = null;
+    },
+  },
 };
 </script>
 
