@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     sidebarStatus: false,
-    currentActivity: "",
+    currentActivity: null,
   },
   mutations: {
     CHANGE_SIDEBAR_STATUS(state) {

@@ -1,11 +1,11 @@
 <template>
   <div class="activity-container">
     <select name="activities" id="activities" v-model="currentActivity">
-      <option value="Carregando..." disabled v-if="loading===true">Carregando...</option>
+      <option disabled value v-if="loading===true">Carregando...</option>
       <option
         v-for="activity in activitiesList"
         :key="activity.id"
-        :value="activity.name"
+        :value="{id: activity.id, name: activity.name}"
       >{{activity.name}}</option>
     </select>
   </div>
@@ -18,7 +18,7 @@ export default {
     return {
       loading: true,
       activitiesList: null,
-      currentActivity: "Carregando...",
+      currentActivity: { id: -1, name: "Carregando..." },
     };
   },
   methods: {
@@ -30,14 +30,19 @@ export default {
         .then((data) => {
           this.activitiesList = data;
           this.loading = false;
-          this.currentActivity = this.activitiesList[0].name;
-
-          this.$store.commit("CHANGE_CURRENT_ACTIVITY", this.currentActivity);
+          this.currentActivity = {
+            id: this.activitiesList[0].id,
+            name: this.activitiesList[0].name,
+          };
         });
     },
   },
   created() {
     this.getActivities();
+  },
+  updated() {
+    this.$store.commit("CHANGE_CURRENT_ACTIVITY", this.currentActivity.id);
+    console.log(this.$store.state.currentActivity);
   },
 };
 </script>
