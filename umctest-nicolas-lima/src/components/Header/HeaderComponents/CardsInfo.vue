@@ -43,12 +43,11 @@ export default {
     },
   },
   methods: {
-    getCardsCount(activityID) {
-      fetch(`${ENV.URL}activities/${activityID}`)
-        .then((r) => r.json())
-        .then((data) => {
-          this.cardsCount = data.cardsCount;
-        });
+    async getCardsCount(activityID) {
+      const dataResponse = await fetch(`${ENV.URL}activities/${activityID}`);
+      const data = await dataResponse.json();
+
+      this.cardsCount = data.cardsCount;
     },
   },
   watch: {

@@ -24,19 +24,22 @@ export default {
     };
   },
   methods: {
-    getActivities() {
+    async getActivities() {
       this.loading = true;
 
-      fetch(`${ENV.URL}activities`)
-        .then((r) => r.json())
-        .then((data) => {
-          this.activitiesList = data;
-          this.loading = false;
-          this.currentActivity = {
-            id: this.activitiesList[0].id,
-            name: this.activitiesList[0].name,
-          };
-        });
+      try {
+        const dataResponse = await fetch(`${ENV.URL}activities`);
+        const dataJSON = await dataResponse.json();
+
+        this.activitiesList = dataJSON;
+        this.loading = false;
+        this.currentActivity = {
+          id: this.activitiesList[0].id,
+          name: this.activitiesList[0].name,
+        };
+      } catch (error) {
+        alert(`Houve um problema no servidor\nERRO: ${error}`);
+      }
     },
   },
   created() {
