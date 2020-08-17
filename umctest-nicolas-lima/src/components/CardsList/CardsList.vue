@@ -22,29 +22,55 @@ export default {
       return this.$store.state.currentActivity.value;
     },
     currentFilter() {
-      return this.$store.state.currentFilter.value;
+      return this.$store.state.currentFilter;
     },
     cardsData() {
       return this.$store.state.cardsData.value;
     },
   },
   methods: {
-    getCardsData() {
+    async getCardsData() {
       this.loading = true;
 
-      fetch(`${ENV.URL}cards`)
-        .then((r) => r.json())
-        .then((data) => {
-          const filteredData = data.filter((el) => {
-            return el.activityId === this.currentActivity;
-          });
+      try {
+        const dataResponse = await fetch(`${ENV.URL}cards`);
 
-          this.$store.commit("CHANGE_CARDS_DATA", filteredData);
-        });
+        const dataJSON = await dataResponse.json();
+
+        const filteredData = this.activityFilter(dataJSON);
+
+        const organizedData = this.organizeByFilter(filteredData);
+
+        this.$store.commit("CHANGE_CARDS_DATA", organizedData);
+      } catch (error) {
+        alert(`Houve um problema no servidor\nERRO: ${error}`);
+      }
+
+      this.loading = false;
+    },
+    activityFilter(data) {
+      const filteredData = data.filter(
+        (el) => el.activityId === this.currentActivity
+      );
+      return filteredData;
+    },
+    organizeByFilter(data) {
+      let sortedData;
+      if (parseInt(this.currentFilter) === 0) {
+        data.sort((a, b) => b.days - a.days);
+
+        sortedData = data;
+      } else {
+        sortedData = data.filter((el) => el.hasPendingDocument === true);
+      }
+      return sortedData;
     },
   },
   watch: {
     currentActivity() {
+      this.getCardsData();
+    },
+    currentFilter() {
       this.getCardsData();
     },
   },
