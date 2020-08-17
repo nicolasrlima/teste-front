@@ -1,12 +1,12 @@
 <template>
   <div>
-    <p>BillTypes</p>
+    <p>Footer</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TheCardBillTypes",
+  name: "TheCardFooter",
 };
 </script>
 
