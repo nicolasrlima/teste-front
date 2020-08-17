@@ -44,10 +44,14 @@ export default {
   },
   methods: {
     async getCardsCount(activityID) {
-      const dataResponse = await fetch(`${ENV.URL}activities/${activityID}`);
-      const data = await dataResponse.json();
+      try {
+        const dataResponse = await fetch(`${ENV.URL}activities/${activityID}`);
+        const data = await dataResponse.json();
 
-      this.cardsCount = data.cardsCount;
+        this.cardsCount = data.cardsCount;
+      } catch (error) {
+        alert(`Houve um problema no servidor\nERRO: ${error}`);
+      }
     },
   },
   watch: {
