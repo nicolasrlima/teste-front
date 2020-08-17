@@ -41,6 +41,7 @@ export default {
   },
   created() {
     this.getActivities();
+    this.$store.commit("CHANGE_CURRENT_ACTIVITY", this.currentActivity.id);
   },
   updated() {
     this.$store.commit("CHANGE_CURRENT_ACTIVITY", this.currentActivity.id);
