@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import ENV from "../../../config.js";
+
 export default {
   name: "ActivitiesSelect",
   data() {
@@ -25,7 +27,7 @@ export default {
     getActivities() {
       this.loading = true;
 
-      fetch("http://localhost:3000/activities")
+      fetch(`${ENV.URL}activities`)
         .then((r) => r.json())
         .then((data) => {
           this.activitiesList = data;

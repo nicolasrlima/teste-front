@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import ENV from "../../../config.js";
+
 export default {
   name: "CardsInfo",
   data() {
@@ -42,7 +44,7 @@ export default {
   },
   methods: {
     getCardsCount(activityID) {
-      fetch(`http://localhost:3000/activities/${activityID}`)
+      fetch(`${ENV.URL}activities/${activityID}`)
         .then((r) => r.json())
         .then((data) => {
           this.cardsCount = data.cardsCount;

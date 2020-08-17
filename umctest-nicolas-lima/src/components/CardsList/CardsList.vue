@@ -2,11 +2,12 @@
   <div class="cards-container">
     <TheCard />
     <CardsListPagination />
-    {{cardsData}}
+    {{ cardsData }}
   </div>
 </template>
 
 <script>
+import ENV from "../../config.js";
 import TheCard from "./CardsListComponents/TheCard.vue";
 import CardsListPagination from "./CardsListComponents/CardsListPagination.vue";
 
@@ -28,10 +29,10 @@ export default {
     },
   },
   methods: {
-    async getCardsData() {
+    getCardsData() {
       this.loading = true;
 
-      fetch(`http://localhost:3000/cards`)
+      fetch(`${ENV.URL}cards`)
         .then((r) => r.json())
         .then((data) => {
           const filteredData = data.filter((el) => {
