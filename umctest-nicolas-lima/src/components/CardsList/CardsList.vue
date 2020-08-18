@@ -1,54 +1,9 @@
 <template>
   <div class="cards-container">
-    <TheCard v-for="card in cardsData" :key="card.id">
-      <template v-slot:days>
-        <span>{{card.days}}</span>
-      </template>
-
-      <template v-slot:patientName>
-        <h2>{{card.patientName}}</h2>
-      </template>
-
-      <template v-slot:accountLabel>
-        <h3>{{card.billSources[0].label}}</h3>
-      </template>
-
-      <template v-slot:account>
-        <span>{{card.billSources[0].value}}</span>
-      </template>
-
-      <template v-slot:attendanceLabel>
-        <h3>{{card.billSources[1].label}}</h3>
-      </template>
-
-      <template v-slot:attendance>
-        <span>{{card.billSources[1].value}}</span>
-      </template>
-
-      <template v-slot:shippingLabel>
-        <h3>{{card.billSources[2].label}}</h3>
-      </template>
-
-      <template v-slot:shipping>
-        <span>{{card.billSources[2].value}}</span>
-      </template>
-
-      <template v-slot:lotLabel>
-        <h3>{{card.billSources[3].label}}</h3>
-      </template>
-
-      <template v-slot:lot>
-        <span>{{card.billSources[3].value}}</span>
-      </template>
-
-      <template v-slot:value>
-        <span>{{card.value}}</span>
-      </template>
-
-      <template v-slot:pendencies>
-        <span>{{card.pendencies}}</span>
-      </template>
-    </TheCard>
+    <div class="cards-list" v-if="getStatus === 3">
+      <TheCard v-for="card in cardsData" :key="card.id" :cardNumber="card.id" />
+    </div>
+    <span v-else>CARREGANDO...</span>
     <CardsListPagination />
   </div>
 </template>
@@ -64,15 +19,22 @@ export default {
     TheCard,
     CardsListPagination,
   },
+  props: ["cardNumber"],
   computed: {
     currentActivity() {
       return this.$store.state.currentActivity.value;
+    },
+    currentActivityStatus() {
+      return this.$store.state.currentActivity.status;
     },
     currentFilter() {
       return this.$store.state.currentFilter;
     },
     cardsData() {
       return this.$store.state.cardsData.value;
+    },
+    getStatus() {
+      return this.$store.state.cardsData.status;
     },
   },
   methods: {

@@ -1,21 +1,21 @@
 <template>
   <div class="details-container">
     <div class="bill-sources">
-      <slot name="accountLabel"></slot>
-      <slot name="account"></slot>
+      <h3>{{accountLabel}}</h3>
+      <span>{{account}}</span>
 
-      <slot name="attendanceLabel"></slot>
-      <slot name="attendance"></slot>
+      <h3>{{attendanceLabel}}</h3>
+      <span>{{attendance}}</span>
 
-      <slot name="shippingLabel"></slot>
-      <slot name="shipping"></slot>
+      <h3>{{shippingLabel}}</h3>
+      <span>{{shipping}}</span>
 
-      <slot name="lotLabel"></slot>
-      <slot name="lot"></slot>
+      <h3>{{lotLabel}}</h3>
+      <span>{{lot}}</span>
     </div>
     <div class="pendencies-value">
-      <slot name="value"></slot>
-      <slot name="pendencies"></slot>
+      <span>{{value}}</span>
+      <button>{{pendencies}}</button>
     </div>
   </div>
 </template>
@@ -23,6 +23,18 @@
 <script>
 export default {
   name: "TheCardDetails",
+  props: [
+    "accountLabel",
+    "account",
+    "attendanceLabel",
+    "attendance",
+    "shippingLabel",
+    "shipping",
+    "lotLabel",
+    "lot",
+    "value",
+    "pendencies",
+  ],
 };
 </script>
 

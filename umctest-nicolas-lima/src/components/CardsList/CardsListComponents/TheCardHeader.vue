@@ -1,13 +1,16 @@
 <template>
   <div class="the-card-header">
-    <slot name="days" id="days"></slot>
-    <slot name="patientName" id="name"></slot>
+    <span>{{days}}</span>
+    <h2>{{patientName}}</h2>
+    <span class="light-grey">{{healthInsurance}}</span>
+    {{status}}
   </div>
 </template>
 
 <script>
 export default {
   name: "TheCardHeader",
+  props: ["status", "days", "patientName", "healthInsurance"],
 };
 </script>
 
