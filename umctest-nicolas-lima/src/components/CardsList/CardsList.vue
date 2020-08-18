@@ -61,18 +61,12 @@ export default {
       return sortedData;
     },
   },
-  // async created() {
-  //   console.log(this.loading);
-  //   await this.getCardsData();
-  //   console.log(this.loading);
-  // },
   watch: {
     async currentActivity() {
       await this.getCardsData();
     },
     async currentFilter() {
       await this.getCardsData();
-      console.log(this.cardsData);
     },
   },
 };

@@ -1,6 +1,5 @@
 <template>
   <div class="the-card-container">
-    <h2>{{cardNumber}}</h2>
     <TheCardHeader
       class="header"
       :status="actualCard.status"
