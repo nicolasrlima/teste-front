@@ -1,5 +1,6 @@
 <template>
   <div class="the-card-container">
+    <h2>{{cardNumber}}</h2>
     <TheCardHeader
       class="header"
       :status="actualCard.status"
@@ -7,7 +8,6 @@
       :patientName="actualCard.patientName"
       :healthInsurance="actualCard.healthInsurance"
     />
-
     <TheCardDetails
       class="details"
       :accountLabel="actualCard.billSources[0].label"
@@ -44,32 +44,7 @@ export default {
     TheCardDetails,
     TheCardFooter,
   },
-  props: [
-    "cardNumber",
-    "patientName",
-    "days",
-    "status",
-    "healthInsurance",
-    "accountLabel",
-    "account",
-    "attendanceLabel",
-    "attendance",
-    "shippingLabel",
-    "shipping",
-    "lotLabel",
-    "lot",
-    "value",
-    "pendencies",
-    "billTypes",
-    "showAttachment",
-    "showDocument",
-    "hasPendingDocument",
-  ],
-  computed: {
-    actualCard() {
-      return this.$store.state.cardsData.value[this.cardNumber];
-    },
-  },
+  props: ["actualCard"],
 };
 </script>
 

@@ -5,7 +5,7 @@
       <option
         v-for="activity in activitiesList"
         :key="activity.id"
-        :value="{id: activity.id, name: activity.name}"
+        :value="activity.id"
       >{{activity.name}}</option>
     </select>
   </div>
@@ -20,8 +20,13 @@ export default {
     return {
       loading: true,
       activitiesList: null,
-      currentActivity: { id: -1, name: "Carregando..." },
+      currentActivity: "",
     };
+  },
+  computed: {
+    currentActivityStatus() {
+      return this.$store.state.currentActivity.status;
+    },
   },
   methods: {
     async getActivities() {
@@ -32,11 +37,8 @@ export default {
         const dataJSON = await dataResponse.json();
 
         this.activitiesList = dataJSON;
+        this.currentActivity = this.activitiesList[0].id;
         this.loading = false;
-        this.currentActivity = {
-          id: this.activitiesList[0].id,
-          name: this.activitiesList[0].name,
-        };
       } catch (error) {
         alert(`Houve um problema no servidor\nERRO: ${error}`);
       }
@@ -44,10 +46,10 @@ export default {
   },
   created() {
     this.getActivities();
-    this.$store.commit("CHANGE_CURRENT_ACTIVITY", this.currentActivity.id);
+    this.$store.dispatch("changeCurrentActivity", this.currentActivity);
   },
   updated() {
-    this.$store.commit("CHANGE_CURRENT_ACTIVITY", this.currentActivity.id);
+    this.$store.dispatch("changeCurrentActivity", this.currentActivity);
   },
 };
 </script>

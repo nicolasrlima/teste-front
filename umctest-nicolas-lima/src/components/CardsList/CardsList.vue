@@ -1,10 +1,9 @@
 <template>
   <div class="cards-container">
-    <div class="cards-list" v-if="getStatus === 3">
-      <TheCard v-for="card in cardsData" :key="card.id" :cardNumber="card.id" />
+    <div class="cards-list">
+      <TheCard v-for="card in cardsData" :key="card.id" :actualCard="card" />
+      <CardsListPagination />
     </div>
-    <span v-else>CARREGANDO...</span>
-    <CardsListPagination />
   </div>
 </template>
 
@@ -19,13 +18,10 @@ export default {
     TheCard,
     CardsListPagination,
   },
-  props: ["cardNumber"],
+  props: ["actualCard"],
   computed: {
     currentActivity() {
       return this.$store.state.currentActivity.value;
-    },
-    currentActivityStatus() {
-      return this.$store.state.currentActivity.status;
     },
     currentFilter() {
       return this.$store.state.currentFilter;
@@ -33,35 +29,25 @@ export default {
     cardsData() {
       return this.$store.state.cardsData.value;
     },
-    getStatus() {
+    cardsDataStatus() {
       return this.$store.state.cardsData.status;
     },
   },
   methods: {
     async getCardsData() {
-      this.loading = true;
-
       try {
-        const dataResponse = await fetch(`${ENV.URL}cards`);
+        const dataResponse = await fetch(
+          `${ENV.URL}cards?activityId=${this.currentActivity}`
+        );
 
         const dataJSON = await dataResponse.json();
 
-        const filteredData = this.activityFilter(dataJSON);
+        const organizedData = this.organizeByFilter(dataJSON);
 
-        const organizedData = this.organizeByFilter(filteredData);
-
-        this.$store.commit("CHANGE_CARDS_DATA", organizedData);
+        this.$store.dispatch("changeCardsData", organizedData);
       } catch (error) {
         alert(`Houve um problema no servidor\nERRO: ${error}`);
       }
-
-      this.loading = false;
-    },
-    activityFilter(data) {
-      const filteredData = data.filter(
-        (el) => el.activityId === this.currentActivity
-      );
-      return filteredData;
     },
     organizeByFilter(data) {
       let sortedData;
@@ -75,12 +61,18 @@ export default {
       return sortedData;
     },
   },
+  // async created() {
+  //   console.log(this.loading);
+  //   await this.getCardsData();
+  //   console.log(this.loading);
+  // },
   watch: {
-    currentActivity() {
-      this.getCardsData();
+    async currentActivity() {
+      await this.getCardsData();
     },
-    currentFilter() {
-      this.getCardsData();
+    async currentFilter() {
+      await this.getCardsData();
+      console.log(this.cardsData);
     },
   },
 };
@@ -91,6 +83,11 @@ export default {
   grid-row: 2;
   display: flex;
   align-content: center;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: row;
 }
 
 @media (min-width: 801px) {

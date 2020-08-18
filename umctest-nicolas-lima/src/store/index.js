@@ -25,6 +25,15 @@ export default new Vuex.Store({
       state.cardsData = { value: payload, status: ENUM.LOADED };
     },
   },
-  actions: {},
+  actions: {
+    changeCurrentActivity(context, payload) {
+      context.state.currentActivity.status = ENUM.LOADING;
+      context.commit("CHANGE_CURRENT_ACTIVITY", payload);
+    },
+    changeCardsData(context, payload) {
+      context.state.cardsData.status = ENUM.LOADING;
+      context.commit("CHANGE_CARDS_DATA", payload);
+    },
+  },
   modules: {},
 });
