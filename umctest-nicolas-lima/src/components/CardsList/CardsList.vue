@@ -1,8 +1,14 @@
 <template>
   <div class="cards-container">
-    <div class="cards-list">
+    <div class="cards-list" v-if="cardsData && cardsData.length">
       <TheCard v-for="card in cardsData" :key="card.id" :actualCard="card" />
       <CardsListPagination />
+    </div>
+    <div v-else-if="cardsData && cardsData.length === 0" class="no-cards-listed">
+      <span>Nenhum paciente cadastrado nesta unidade!</span>
+    </div>
+    <div v-else class="loading-cards">
+      <span>loading</span>
     </div>
   </div>
 </template>
@@ -74,19 +80,22 @@ export default {
 
 <style>
 .cards-container {
-  grid-row: 2;
-  display: flex;
-  align-content: center;
-}
-
-.cards-list {
-  display: flex;
-  flex-direction: row;
+  grid-column: 1 / 4;
+  margin-top: 1.5em;
 }
 
 @media (min-width: 801px) {
   .cards-container {
-    grid-column: 1 / 4;
+    margin-top: 1em;
+    width: 85vw;
+  }
+
+  .cards-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+    justify-items: center;
+    align-items: space-between;
   }
 }
 </style>

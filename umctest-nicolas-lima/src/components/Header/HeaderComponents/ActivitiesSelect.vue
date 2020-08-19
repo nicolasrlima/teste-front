@@ -77,5 +77,9 @@ select:focus {
     grid-column: 1;
     justify-self: start;
   }
+
+  select {
+    font-size: 1.8rem;
+  }
 }
 </style>

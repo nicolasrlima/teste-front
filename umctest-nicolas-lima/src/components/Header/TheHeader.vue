@@ -23,14 +23,17 @@ export default {
 
 <style>
 .header-container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
   margin-top: 1rem;
   grid-row: 1;
-  width: 60vw;
+  width: 70vw;
 }
 
 @media (min-width: 601px) {
   .header-container {
-    width: 70vw;
+    width: 80vw;
   }
 }
 
@@ -40,8 +43,8 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    width: 80vw;
     font-size: 1.2em;
+    width: 84vw;
   }
 }
 </style>

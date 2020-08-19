@@ -23,7 +23,6 @@ export default {
   display: grid;
   grid-template-rows: 100px 1fr;
   justify-content: center;
-  height: 100vh;
 }
 
 @media (min-width: 801px) {

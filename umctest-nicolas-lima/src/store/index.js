@@ -9,7 +9,7 @@ export default new Vuex.Store({
     sidebarStatus: false,
     currentActivity: { value: null, status: ENUM.INIT },
     currentFilter: null,
-    cardsData: { value: null, status: ENUM.INIT },
+    cardsData: { value: {}, status: ENUM.INIT },
   },
   mutations: {
     CHANGE_SIDEBAR_STATUS(state) {

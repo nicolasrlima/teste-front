@@ -25,6 +25,7 @@ export default {
 <style>
 * {
   box-sizing: border-box;
+  font-family: "Titillium Web";
 }
 
 body,
@@ -54,5 +55,6 @@ body {
 /*general styles */
 .light-grey {
   color: #a1acc9;
+  font-size: 0.8em;
 }
 </style>
