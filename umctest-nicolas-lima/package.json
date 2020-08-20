@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:e2e": "vue-cli-service test:e2e",
+    "cy:open": "vue-cli-service test:e2e",
+    "cy:test": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint",
     "deploy": "npm run build && deploy.sh"
   },
