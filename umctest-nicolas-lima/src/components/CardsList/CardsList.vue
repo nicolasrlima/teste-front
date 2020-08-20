@@ -1,11 +1,31 @@
 <template>
   <div class="cards-container">
     <div class="cards-list" v-if="cardsData && cardsData.length">
-      <TheCard v-for="card in cardsData" :key="card.id" :actualCard="card" />
+      <TheCard v-for="card in visibleCards" :key="card.id" :actualCard="card" />
       <div class="pagination">
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
+        <button
+          id="backwards-btn"
+          @click="updateCurrentPage(currentPage - 1)"
+          :disabled="currentPage === 0"
+        >
+          <img src="../../assets/arrow.svg" />
+        </button>
+
+        <button
+          v-for="(page, pageIndex) in totalPages"
+          :key="page"
+          @click="updateCurrentPage(pageIndex)"
+          class="page-btn light-grey"
+          :id="pageIndex === currentPage ? 'active-page' : ''"
+        >{{page}}</button>
+
+        <button
+          id="forwards-btn"
+          @click="updateCurrentPage(currentPage + 1)"
+          :disabled="currentPage === totalPages - 1"
+        >
+          <img src="../../assets/arrow.svg" />
+        </button>
       </div>
     </div>
     <div v-else-if="cardsData && cardsData.length === 0" class="no-cards-listed">
@@ -27,6 +47,13 @@ export default {
     TheCard,
   },
   props: ["actualCard"],
+  data() {
+    return {
+      currentPage: 0,
+      pageSize: 9,
+      visibleCards: [],
+    };
+  },
   computed: {
     currentActivity() {
       return this.$store.state.currentActivity.value;
@@ -40,41 +67,56 @@ export default {
     cardsDataStatus() {
       return this.$store.state.cardsData.status;
     },
+    totalPages() {
+      return Math.ceil(this.cardsData.length / this.pageSize);
+    },
   },
   methods: {
-    async getCardsData() {
+    async getCards() {
       try {
-        const dataResponse = await fetch(
+        const cardsResponse = await fetch(
           `${ENV.URL}cards?activityId=${this.currentActivity}`
         );
 
-        const dataJSON = await dataResponse.json();
+        const cardsJSON = await cardsResponse.json();
 
-        const organizedData = this.organizeByFilter(dataJSON);
+        const organizedCards = this.organizeByFilter(cardsJSON);
 
-        this.$store.dispatch("changeCardsData", organizedData);
+        this.$store.dispatch("changeCardsData", organizedCards);
       } catch (error) {
         alert(`Houve um problema no servidor\nERRO: ${error}`);
       }
     },
-    organizeByFilter(data) {
-      let sortedData;
+    organizeByFilter(cardsData) {
+      let sortedCards;
       if (parseInt(this.currentFilter) === 0) {
-        data.sort((a, b) => b.days - a.days);
+        cardsData.sort((a, b) => b.days - a.days);
 
-        sortedData = data;
+        sortedCards = cardsData;
       } else {
-        sortedData = data.filter((el) => el.hasPendingDocument === true);
+        sortedCards = cardsData.filter((el) => el.hasPendingDocument === true);
       }
-      return sortedData;
+      return sortedCards;
+    },
+    updateVisibleCards() {
+      this.visibleCards = this.cardsData.slice(
+        this.currentPage * this.pageSize,
+        this.currentPage * this.pageSize + this.pageSize
+      );
+    },
+    updateCurrentPage(pageNumber) {
+      this.currentPage = pageNumber;
+      this.updateVisibleCards();
     },
   },
   watch: {
     async currentActivity() {
-      await this.getCardsData();
+      await this.getCards();
+      this.updateVisibleCards();
     },
     async currentFilter() {
-      await this.getCardsData();
+      await this.getCards();
+      this.updateVisibleCards();
     },
   },
 };
@@ -86,7 +128,50 @@ export default {
   margin-top: 1.5em;
 }
 
-@media (min-width: 801px) {
+#backwards-btn,
+#forwards-btn,
+.page-btn {
+  border: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.25em 0.75em;
+}
+
+#backwards-btn {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+#forwards-btn {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+#backwards-btn:disabled,
+#forwards-btn:disabled {
+  visibility: hidden;
+}
+
+.page-btn {
+  font-size: 1em;
+  margin: 0 0.5em;
+}
+
+#active-page {
+  background: #2793ff;
+  color: #fff;
+  border-radius: 5px;
+}
+
+@media (min-width: 1025px) {
   .cards-container {
     margin-top: 1em;
     width: 85vw;
@@ -98,6 +183,10 @@ export default {
     gap: 1.5em;
     justify-items: center;
     align-items: space-between;
+  }
+
+  .pagination {
+    grid-column: 2;
   }
 }
 </style>
