@@ -9,6 +9,7 @@ export default new Vuex.Store({
     sidebarStatus: false,
     currentActivity: { value: null, status: ENUM.INIT },
     currentFilter: null,
+    resultsPerPage: null,
     cardsData: { value: {}, status: ENUM.INIT },
   },
   mutations: {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     CHANGE_CURRENT_FILTER(state, payload) {
       state.currentFilter = payload;
+    },
+    CHANGE_RESULTS_PER_PAGE(state, payload) {
+      state.resultsPerPage = payload;
     },
     CHANGE_CARDS_DATA(state, payload) {
       state.cardsData = { value: payload, status: ENUM.LOADED };

@@ -50,7 +50,6 @@ export default {
   data() {
     return {
       currentPage: 0,
-      pageSize: 9,
       visibleCards: [],
     };
   },
@@ -67,8 +66,11 @@ export default {
     cardsDataStatus() {
       return this.$store.state.cardsData.status;
     },
+    resultsPerPage() {
+      return this.$store.state.resultsPerPage;
+    },
     totalPages() {
-      return Math.ceil(this.cardsData.length / this.pageSize);
+      return Math.ceil(this.cardsData.length / this.resultsPerPage);
     },
   },
   methods: {
@@ -100,8 +102,8 @@ export default {
     },
     updateVisibleCards() {
       this.visibleCards = this.cardsData.slice(
-        this.currentPage * this.pageSize,
-        this.currentPage * this.pageSize + this.pageSize
+        this.currentPage * this.resultsPerPage,
+        this.currentPage * this.resultsPerPage + this.resultsPerPage
       );
     },
     updateCurrentPage(pageNumber) {
@@ -115,6 +117,10 @@ export default {
       this.updateVisibleCards();
     },
     async currentFilter() {
+      await this.getCards();
+      this.updateVisibleCards();
+    },
+    async resultsPerPage() {
       await this.getCards();
       this.updateVisibleCards();
     },
