@@ -5,29 +5,13 @@
         <img id="logo" src="../../assets/brand.svg" alt="PEG Contas Logo" />
 
         <nav>
-          <router-link to="/activities">
-            <img src="../../assets/accounts.svg" />
-            <span class="light-grey">Minhas Atividades</span>
-          </router-link>
-
-          <router-link to="/accounts">
-            <img src="../../assets/accounts.svg" />
-            <span class="light-grey">Todas as contas</span>
-          </router-link>
-
-          <router-link to="/users">
-            <img src="../../assets/user.svg" />
-            <span class="light-grey">Usuários</span>
-          </router-link>
-
-          <router-link to="/performance">
-            <img src="../../assets/performance.svg" />
-            <span class="light-grey">Desempenho</span>
-          </router-link>
-
-          <router-link to="/dashboard">
-            <img src="../../assets/dashboard.svg" />
-            <span class="light-grey">Dashboard</span>
+          <router-link
+            v-for="(option, index) in sidebarOptions"
+            :key="index"
+            :to="option.routerPath"
+          >
+            <img :src="option.imgPath" />
+            <span class="light-grey">{{option.name}}</span>
           </router-link>
         </nav>
       </section>
@@ -43,6 +27,37 @@ export default {
   name: "NavigationSidebar",
   components: {
     HamburguerMenu,
+  },
+  data() {
+    return {
+      sidebarOptions: {
+        activities: {
+          name: "Minhas atividades",
+          routerPath: "/activities",
+          imgPath: require("../../assets/activities.svg"),
+        },
+        accounts: {
+          name: "Todas as contas",
+          routerPath: "/accounts",
+          imgPath: require("../../assets/accounts.svg"),
+        },
+        user: {
+          name: "Usuários",
+          routerPath: "/user",
+          imgPath: require("../../assets/user.svg"),
+        },
+        performance: {
+          name: "Desempenho",
+          routerPath: "/performance",
+          imgPath: require("../../assets/performance.svg"),
+        },
+        dashboard: {
+          name: "Dashboard",
+          routerPath: "/dashboard",
+          imgPath: require("../../assets/dashboard.svg"),
+        },
+      },
+    };
   },
   computed: {
     sidebarStatus() {
@@ -117,6 +132,7 @@ a {
 a:hover,
 .router-link-active {
   border-left: 4px solid #2793ff;
+  color: #2793ff;
 }
 
 .router-link-active span {
