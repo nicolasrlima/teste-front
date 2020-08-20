@@ -14,7 +14,12 @@
 <script>
 export default {
   name: "TheCardHeader",
-  props: ["status", "days", "patientName", "healthInsurance"],
+  props: {
+    status: String,
+    days: Number,
+    patientName: String,
+    healthInsurance: String,
+  },
 };
 </script>
 

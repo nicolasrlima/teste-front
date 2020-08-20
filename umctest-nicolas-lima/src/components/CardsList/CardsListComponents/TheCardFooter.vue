@@ -20,7 +20,12 @@
 <script>
 export default {
   name: "TheCardFooter",
-  props: ["billTypes", "showAttachment", "showDocument", "hasPendingDocument"],
+  props: {
+    billTypes: Array,
+    showAttachment: Boolean,
+    showDocument: Boolean,
+    hasPendingDocument: Boolean,
+  },
 };
 </script>
 

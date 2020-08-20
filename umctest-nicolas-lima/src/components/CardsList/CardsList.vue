@@ -2,11 +2,12 @@
   <div class="cards-container">
     <div class="cards-list" v-if="cardsData && cardsData.length">
       <TheCard v-for="card in visibleCards" :key="card.id" :actualCard="card" />
+
       <div class="pagination">
         <button
           id="backwards-btn"
-          @click="updateCurrentPage(currentPage - 1)"
           :disabled="currentPage === 0"
+          @click="updateCurrentPage(currentPage - 1)"
         >
           <img src="../../assets/arrow.svg" />
         </button>
@@ -14,23 +15,25 @@
         <button
           v-for="(page, pageIndex) in totalPages"
           :key="page"
-          @click="updateCurrentPage(pageIndex)"
           class="page-btn light-grey"
           :id="pageIndex === currentPage ? 'active-page' : ''"
+          @click="updateCurrentPage(pageIndex)"
         >{{page}}</button>
 
         <button
           id="forwards-btn"
-          @click="updateCurrentPage(currentPage + 1)"
           :disabled="currentPage === totalPages - 1"
+          @click="updateCurrentPage(currentPage + 1)"
         >
           <img src="../../assets/arrow.svg" />
         </button>
       </div>
     </div>
+
     <div v-else-if="cardsData && cardsData.length === 0" class="no-cards-listed">
       <span>Nenhum paciente cadastrado nesta unidade!</span>
     </div>
+
     <div v-else class="loading-cards">
       <span>loading</span>
     </div>

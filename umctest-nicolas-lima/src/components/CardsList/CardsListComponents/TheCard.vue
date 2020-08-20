@@ -41,7 +41,7 @@ export default {
     TheCardDetails,
     TheCardFooter,
   },
-  props: ["actualCard"],
+  props: { actualCard: Object },
   data() {
     return {
       cardOpen: false,
