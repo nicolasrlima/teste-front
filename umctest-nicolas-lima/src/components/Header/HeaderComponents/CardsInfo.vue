@@ -8,8 +8,8 @@
     </div>
     <div class="total">
       <span class="light-grey">Total:</span>
-      <div class="total-number">
-        <span>{{totalCards}}</span>
+      <div class="total-container">
+        <span class="total-number">{{totalCards}}</span>
         <span class="desktop">Cards</span>
       </div>
     </div>
@@ -91,14 +91,18 @@ export default {
   margin-left: 0.5em;
 }
 
-.total-number {
+.total-container {
   font-size: 0.8em;
+}
+
+.total-number {
+  margin-right: 0.2em;
 }
 
 #delayed::before,
 #warning::before,
 #good::before {
-  content: "\2022";
+  content: "\25CF";
   display: inline-block;
   width: 0.75em;
   font-weight: bold;

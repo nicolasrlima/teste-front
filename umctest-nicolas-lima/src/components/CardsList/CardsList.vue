@@ -132,6 +132,11 @@ export default {
 </script>
 
 <style>
+.no-cards-listed {
+  text-align: center;
+  margin-top: 5em;
+}
+
 .pagination {
   text-align: center;
   margin-top: 1em;
@@ -189,6 +194,10 @@ export default {
     gap: 1.5em;
     justify-items: center;
     align-items: space-between;
+  }
+
+  .no-cards-listed {
+    font-size: 1.2em;
   }
 
   .pagination {
