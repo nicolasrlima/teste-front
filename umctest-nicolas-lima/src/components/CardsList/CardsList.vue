@@ -2,7 +2,11 @@
   <div class="cards-container">
     <div class="cards-list" v-if="cardsData && cardsData.length">
       <TheCard v-for="card in cardsData" :key="card.id" :actualCard="card" />
-      <CardsListPagination />
+      <div class="pagination">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+      </div>
     </div>
     <div v-else-if="cardsData && cardsData.length === 0" class="no-cards-listed">
       <span>Nenhum paciente cadastrado nesta unidade!</span>
@@ -16,13 +20,11 @@
 <script>
 import ENV from "../../config.js";
 import TheCard from "./CardsListComponents/TheCard.vue";
-import CardsListPagination from "./CardsListComponents/CardsListPagination.vue";
 
 export default {
   name: "CardsList",
   components: {
     TheCard,
-    CardsListPagination,
   },
   props: ["actualCard"],
   computed: {
