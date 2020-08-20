@@ -23,3 +23,16 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+import "@testing-library/cypress/add-commands";
+
+Cypress.Commands.add("navigateToActivities", () => {
+  cy.visit(Cypress.config().baseUrl);
+
+  cy.get("[data-cy=hamburguer-menu]").click();
+
+  cy.get("nav").should("be.visible");
+
+  cy.findByText("Minhas atividades").click();
+
+  cy.contains("Sudanka Bakalowits").should("be.visible");
+});
