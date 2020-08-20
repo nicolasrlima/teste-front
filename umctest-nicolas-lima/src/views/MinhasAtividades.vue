@@ -23,9 +23,10 @@ export default {
   display: grid;
   grid-template-rows: 100px 1fr;
   justify-content: center;
+  padding-bottom: 1em;
 }
 
-@media (min-width: 801px) {
+@media (min-width: 1025px) {
   .activities-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

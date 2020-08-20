@@ -37,7 +37,7 @@ export default {
   }
 }
 
-@media (min-width: 801px) {
+@media (min-width: 1025px) {
   .header-container {
     grid-column: 1 / 4;
     display: grid;

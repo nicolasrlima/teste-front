@@ -111,7 +111,7 @@ export default {
   color: #20bf6b;
 }
 
-@media (min-width: 801px) {
+@media (min-width: 1025px) {
   .info-container {
     grid-column: 2;
     flex-direction: column;

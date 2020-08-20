@@ -72,7 +72,7 @@ select:focus {
   outline: none;
 }
 
-@media (min-width: 801px) {
+@media (min-width: 1025px) {
   .activity-container {
     grid-column: 1;
     justify-self: start;

@@ -78,7 +78,7 @@ export default {
   overflow: auto;
 }
 
-@media (min-width: 801px) {
+@media (min-width: 1025px) {
   .the-card-container {
     width: 26vw;
   }
