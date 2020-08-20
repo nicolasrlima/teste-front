@@ -49,4 +49,11 @@ export default {
 .fade-enter-active {
   transition: opacity 0.5s;
 }
+
+@media (min-width: 1025px) {
+  #container {
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+}
 </style>

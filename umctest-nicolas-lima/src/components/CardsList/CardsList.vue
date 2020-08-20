@@ -35,7 +35,7 @@
     </div>
 
     <div v-else class="loading-cards">
-      <span>loading</span>
+      <div class="loading-icon"></div>
     </div>
   </div>
 </template>
@@ -139,7 +139,7 @@ export default {
 
 .pagination {
   text-align: center;
-  margin-top: 1em;
+  margin: 1em 0;
 }
 
 #backwards-btn,
@@ -179,6 +179,27 @@ export default {
   background: #2793ff;
   color: #fff;
   border-radius: 5px;
+}
+
+.loading-icon:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 6px solid #2793ff;
+  border-color: #2793ff transparent #2793ff transparent;
+  animation: loading-rotation 1.2s linear infinite;
+}
+
+@keyframes loading-rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (min-width: 1025px) {
