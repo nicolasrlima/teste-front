@@ -83,6 +83,12 @@ export default {
 @media (min-width: 1025px) {
   .the-card-container {
     width: 26vw;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .the-card-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 5px #2793ff;
   }
 
   .details-closed {

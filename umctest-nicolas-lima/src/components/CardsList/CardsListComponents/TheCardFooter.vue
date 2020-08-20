@@ -74,4 +74,11 @@ export default {
 .attachment-container img {
   cursor: pointer;
 }
+
+@media (min-width: 1025px) {
+  .bill-type:hover {
+    color: #fff;
+    background: #51586f;
+  }
+}
 </style>
