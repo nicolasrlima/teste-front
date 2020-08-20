@@ -56,7 +56,6 @@ export default {
 
 <style scoped>
 select {
-  width: fit-content;
   -webkit-padding-end: 20px;
   -moz-padding-end: 20px;
   -webkit-appearance: none;
@@ -66,9 +65,6 @@ select {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-}
-
-select:focus {
   outline: none;
 }
 

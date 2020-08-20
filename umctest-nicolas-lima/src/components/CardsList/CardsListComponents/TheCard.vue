@@ -21,6 +21,7 @@
         :lot="actualCard.billSources[3].value"
         :value="actualCard.value"
         :pendencies="actualCard.pendencies"
+        @click.native="cardOpen = !cardOpen"
       />
     </transition>
 
@@ -30,6 +31,7 @@
       :showAttachment="actualCard.showAttachment"
       :showDocument="actualCard.showDocument"
       :hasPendingDocument="actualCard.hasPendingDocument"
+      @click.native="cardOpen = !cardOpen"
     />
   </div>
 </template>

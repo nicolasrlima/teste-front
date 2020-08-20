@@ -25,10 +25,7 @@ export default {
 .header-container {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
-  justify-items: center;
   margin-top: 1rem;
-  grid-row: 1;
-  width: 70vw;
 }
 
 @media (min-width: 601px) {

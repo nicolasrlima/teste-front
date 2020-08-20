@@ -129,9 +129,9 @@ export default {
 </script>
 
 <style>
-.cards-container {
-  grid-column: 1 / 4;
-  margin-top: 1.5em;
+.pagination {
+  text-align: center;
+  margin-top: 1em;
 }
 
 #backwards-btn,
@@ -143,6 +143,7 @@ export default {
   cursor: pointer;
   user-select: none;
   padding: 0.25em 0.75em;
+  font-size: 1em;
 }
 
 #backwards-btn {
@@ -166,11 +167,6 @@ export default {
   visibility: hidden;
 }
 
-.page-btn {
-  font-size: 1em;
-  margin: 0 0.5em;
-}
-
 #active-page {
   background: #2793ff;
   color: #fff;
@@ -179,6 +175,7 @@ export default {
 
 @media (min-width: 1025px) {
   .cards-container {
+    grid-column: 1 / 4;
     margin-top: 1em;
     width: 85vw;
   }
@@ -193,6 +190,10 @@ export default {
 
   .pagination {
     grid-column: 2;
+  }
+
+  .page-btn {
+    margin: 0 0.5em;
   }
 }
 </style>
