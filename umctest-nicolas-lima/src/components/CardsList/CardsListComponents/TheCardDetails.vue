@@ -1,24 +1,9 @@
 <template>
   <div class="details-container">
     <div class="bill-source-container">
-      <div class="bill-source">
-        <h3 class="bill-source-label">{{accountLabel}}</h3>
-        <span class="bill-source-value">{{account}}</span>
-      </div>
-
-      <div class="bill-source">
-        <h3 class="bill-source-label">{{attendanceLabel}}</h3>
-        <span class="bill-source-value">{{attendance}}</span>
-      </div>
-
-      <div class="bill-source">
-        <h3 class="bill-source-label">{{shippingLabel}}</h3>
-        <span class="bill-source-value">{{shipping}}</span>
-      </div>
-
-      <div class="bill-source">
-        <h3 class="bill-source-label">{{lotLabel}}</h3>
-        <span class="bill-source-value">{{lot}}</span>
+      <div class="bill-source" v-for="(bill, index) in billSources" :key="index">
+        <h3 class="bill-source-label">{{bill.label}}</h3>
+        <span class="bill-source-value">{{bill.value}}</span>
       </div>
     </div>
     <div class="pendencies-container">
@@ -31,18 +16,7 @@
 <script>
 export default {
   name: "TheCardDetails",
-  props: [
-    "accountLabel",
-    "account",
-    "attendanceLabel",
-    "attendance",
-    "shippingLabel",
-    "shipping",
-    "lotLabel",
-    "lot",
-    "value",
-    "pendencies",
-  ],
+  props: { billSources: Object, value: Number, pendencies: Number },
   computed: {
     valueWithMask() {
       return this.value.toLocaleString("pt-br", {

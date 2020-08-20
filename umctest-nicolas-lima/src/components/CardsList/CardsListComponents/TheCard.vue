@@ -11,14 +11,7 @@
     <transition name="dropdown">
       <TheCardDetails
         :class="cardOpen ? 'details-open' : 'details-closed'"
-        :accountLabel="actualCard.billSources[0].label"
-        :account="actualCard.billSources[0].value"
-        :attendanceLabel="actualCard.billSources[1].label"
-        :attendance="actualCard.billSources[1].value"
-        :shippingLabel="actualCard.billSources[2].label"
-        :shipping="actualCard.billSources[2].value"
-        :lotLabel="actualCard.billSources[3].label"
-        :lot="actualCard.billSources[3].value"
+        :bill-sources="actualCard.billSources"
         :value="actualCard.value"
         :pendencies="actualCard.pendencies"
         @click.native="cardOpen = !cardOpen"
