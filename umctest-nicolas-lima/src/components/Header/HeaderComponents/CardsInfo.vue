@@ -1,19 +1,17 @@
 <template>
   <div class="info-container">
     <div class="details-container">
-      <span id="delayed" class="mobile">{{cardsCount.delayed}}</span>
-      <span id="delayed" class="desktop">{{cardsCount.delayed}} cards</span>
-
-      <span id="warning" class="mobile">{{cardsCount.warning}}</span>
-      <span id="warning" class="desktop">{{cardsCount.warning}} cards</span>
-
-      <span id="good" class="mobile">{{cardsCount.good}}</span>
-      <span id="good" class="desktop">{{cardsCount.good}} cards</span>
+      <div v-for="(cardsNumber, key) in cardsCount" :id="key" :key="key">
+        <span class="status-number">{{cardsNumber}}</span>
+        <span class="desktop">Cards</span>
+      </div>
     </div>
-    <div id="total">
+    <div class="total">
       <span class="light-grey">Total:</span>
-      <span class="mobile">{{totalCards}}</span>
-      <span class="desktop">{{totalCards}} contas</span>
+      <div class="total-number">
+        <span>{{totalCards}}</span>
+        <span class="desktop">Cards</span>
+      </div>
     </div>
   </div>
 </template>
@@ -70,24 +68,31 @@ export default {
   justify-self: center;
 }
 
-.details-container span {
-  margin-right: 0.5em;
+.details-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.details-container .status-number {
+  margin-right: 0.2em;
 }
 
 .light-grey {
   margin-right: 0.2em;
 }
 
-.mobile {
-  display: inline-block;
-}
-
 .desktop {
   display: none;
 }
 
-#total {
-  display: inline-block;
+.total {
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.5em;
+}
+
+.total-number {
+  font-size: 0.8em;
 }
 
 #delayed::before,
@@ -115,20 +120,15 @@ export default {
   .info-container {
     grid-column: 2;
     flex-direction: column;
-    justify-content: space-around;
-  }
-
-  .mobile {
-    display: none;
   }
 
   .desktop {
     display: inline-block;
+    margin-right: 1em;
   }
 
-  #total {
-    display: block;
-    font-size: 0.8em;
+  .total {
+    margin-left: 0;
   }
 }
 </style>
