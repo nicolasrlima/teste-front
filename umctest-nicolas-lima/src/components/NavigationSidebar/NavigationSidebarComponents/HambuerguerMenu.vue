@@ -1,6 +1,11 @@
 <template>
   <transition name="fade">
-    <div id="container" v-show="sidebarStatus === false" @click="toggleSidebar">
+    <div
+      id="container"
+      v-show="sidebarStatus === false"
+      @click="toggleSidebar"
+      data-cy="hamburguer-menu"
+    >
       <div class="bar"></div>
       <div class="bar"></div>
       <div class="bar"></div>

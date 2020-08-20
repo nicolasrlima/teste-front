@@ -1,6 +1,17 @@
-describe("My First Test", () => {
-  it("Visits the app root url", () => {
-    cy.visit("/");
-    cy.contains("h1", "Welcome to Your Vue.js App");
+describe("Navigates to activities and checks select usage", () => {
+  it("Should visit root and navigate to activities", () => {
+    cy.visit(Cypress.config().baseUrl);
+
+    cy.server();
+
+    cy.route("**/activities").as("getActivities");
+
+    cy.get("[data-cy=hamburguer-menu]").click();
+
+    cy.get("nav").should("be.visible");
+
+    cy.get('[href="/activities"]').click();
+
+    // cy.wait("@getActivities");
   });
 });
