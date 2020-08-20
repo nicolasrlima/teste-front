@@ -126,6 +126,7 @@ export default {
     async resultsPerPage() {
       await this.getCards();
       this.updateVisibleCards();
+      this.updateCurrentPage(0);
     },
   },
 };
