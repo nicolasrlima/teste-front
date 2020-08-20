@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "TheCardDetails",
-  props: { billSources: Object, value: Number, pendencies: Number },
+  props: { billSources: Array, value: Number, pendencies: Number },
   computed: {
     valueWithMask() {
       return this.value.toLocaleString("pt-br", {
