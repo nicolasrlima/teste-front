@@ -118,10 +118,12 @@ export default {
     async currentActivity() {
       await this.getCards();
       this.updateVisibleCards();
+      this.updateCurrentPage(0);
     },
     async currentFilter() {
       await this.getCards();
       this.updateVisibleCards();
+      this.updateCurrentPage(0);
     },
     async resultsPerPage() {
       await this.getCards();
